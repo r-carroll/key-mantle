@@ -1,7 +1,7 @@
 https://script.google.com/macros/s/AKfycbzhqnU4SRjU5CEQIX62TTV-nMKPv9eWyNP6dkZFCBbwQkyPxtO_/exec
 
 id=15PamibzLqtvYpusL8v_na1qWCHTP5QVMlNyVPlDVKj0
-api_key=AIzaSyBz6_NpXCgtSA-OmcBtibV-bPAD7tPOMDs
+
 
 
 POST https://sheets.googleapis.com/v4/spreadsheets/15PamibzLqtvYpusL8v_na1qWCHTP5QVMlNyVPlDVKj0/values/Form%20Responses%201:append?insertDataOption=INSERT_ROWS&key=[YOUR_API_KEY] HTTP/1.1
