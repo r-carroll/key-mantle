@@ -25,7 +25,7 @@ export class MailFormService {
   
     // get all data in form and return object
     getFormData(form) {
-      var elements = form.elements;
+      var elements = form.form.elements;
   
       var fields = Object.keys(elements).filter(function(k) {
             return (elements[k].name !== "honeypot");

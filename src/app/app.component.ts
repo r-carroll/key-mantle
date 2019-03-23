@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, HostListener, ElementRef } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
+import { MailFormService } from './services/mail-form.service';
 
 @Component({
   selector: 'app-root',
@@ -9,21 +10,18 @@ import { HttpHeaders } from '@angular/common/http';
 export class AppComponent implements OnInit {
   @ViewChild('subEmail') subEmail: ElementRef;
   title = 'K&M';
+  formService;
 
   ngOnInit() {
   }
 
+  constructor(formService: MailFormService) {
+    this.formService = formService;
+  }
+
   submitEmail(event: Event) {
-    const url = 'https://script.google.com/macros/s/AKfycbzhqnU4SRjU5CEQIX62TTV-nMKPv9eWyNP6dkZFCBbwQkyPxtO_/exec';
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
 
-    event.preventDefault();
-    
-    this
-
+    this.formService.handleFormSubmit(event);
+    return;
   }
 }
