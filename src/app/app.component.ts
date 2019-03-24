@@ -15,8 +15,9 @@ export class AppComponent implements OnInit {
   formService;
   email;
   modalRef: BsModalRef;
-  validEmail: boolean = true;
+  validEmail = true;
   bot;
+  isSubmitting = false;
 
 
   ngOnInit() {
@@ -32,12 +33,14 @@ export class AppComponent implements OnInit {
 
   submitEmail(event: Event) {
     if (!this.bot) {
-      if(!this.formService.validateEmail(this.email)) {
+      if (!this.formService.validateEmail(this.email)) {
         this.validEmail = false;
       } else {
         this.validEmail = true;
+        this.isSubmitting = true;
         this.formService.handleFormSubmit(this.email).subscribe(data => {
         this.email = '';
+        this.isSubmitting = false;
         this.openModal(this.modalTemplate);
       });
       }
