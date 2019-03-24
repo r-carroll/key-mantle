@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild, HostListener, ElementRef } from '@angular/core';
-import { HttpHeaders } from '@angular/common/http';
+import { Component, OnInit, ViewChild, HostListener, ElementRef, TemplateRef } from '@angular/core';
 import { MailFormService } from './services/mail-form.service';
-import { NgbdModalBasic } from './modal/modal.component';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -10,21 +9,29 @@ import { NgbdModalBasic } from './modal/modal.component';
 })
 export class AppComponent implements OnInit {
   @ViewChild('subEmail') subEmail: ElementRef;
+  @ViewChild('toggleModal') toggleModal: ElementRef;
+  @ViewChild('template') modalTemplate: ElementRef;
   title = 'K&M';
   formService;
   email;
+  modalRef: BsModalRef;
 
 
   ngOnInit() {
   }
 
-  constructor(formService: MailFormService, private modalComponent: NgbdModalBasic) {
+  constructor(formService: MailFormService, private modalService: BsModalService) {
     this.formService = formService;
   }
 
+  openModal(template) {
+    this.modalRef = this.modalService.show(template,{ backdrop: 'static', keyboard: false });
+}
+
   submitEmail(event: Event) {
 
-    this.modalComponent.open(null);
+    // this.toggleModal.nativeElement.click();
+    this.openModal(this.modalTemplate);
     // this.formService.handleFormSubmit(this.email).subscribe(data => {
     //   // Success message
     //   this.email = '';

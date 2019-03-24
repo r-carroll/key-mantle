@@ -163,6 +163,21 @@
     </div>
   </section>
 
+  <button type="button" class="btn btn-primary" id="toggleModal" #toggleModal [hidden]="true" (click)="openModal(template)">Create template modal</button>
+
+  <ng-template #template>
+      <div class="modal-header">
+          <h4 class="modal-title pull-left">New home alerts</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body text-center">
+          Email successfully saved <br /><br />
+          <i class="fas fa-check-circle fa-7x"></i>
+      </div>
+  </ng-template>
+
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
     <div class="container">

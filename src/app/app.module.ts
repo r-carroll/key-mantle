@@ -3,11 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {NgbModule, NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ModalModule } from './modal/modal.module';
+import { ModalModule, BsModalRef } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -17,13 +16,11 @@ import { ModalModule } from './modal/modal.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
     FormsModule,
     HttpClientModule,
-    NgbModalModule,
-    ModalModule
+    ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [BsModalRef],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
