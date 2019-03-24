@@ -14,16 +14,16 @@
   [ngClass]="{ 'show': navbarOpen }">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#about" (click)="this.toggleNavbar()">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#projects">Apply</a>
+        <a class="nav-link" href="#projects" (click)="this.toggleNavbar()">Apply</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#maintenance">Maintenance</a>
+        <a class="nav-link" href="#maintenance" (click)="this.toggleNavbar()">Maintenance</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#signup">Contact</a>
+        <a class="nav-link" href="#signup" (click)="this.toggleNavbar()">Contact</a>
       </li>
     </ul>
   </div>
