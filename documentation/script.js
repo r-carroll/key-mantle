@@ -38,10 +38,24 @@ function formatMailBody(obj, order) {
   
     try {
       Logger.log(e); // the Google Script version of console.log see: Class Logger
-      record_data(e);
+      
+      var cmCheck = e.postData.contents;
+      var isValidRequest = cmCheck == "cmvalidtoken"
+      
+      if (isValidRequest) {
+        record_data(e);
+      }
       
       // shorter name for form data
       var mailData = e.parameters;
+      
+      //return ContentService.createTextOutput(JSON.stringify(e));
+      
+      
+      
+      if (!isValidRequest) {
+        throw "Bad Request";
+      }
   
       // names and order of form elements (if set)
       var orderParameter = e.parameters.formDataNameOrder;
@@ -56,7 +70,7 @@ function formatMailBody(obj, order) {
       var sendEmailTo = (typeof TO_ADDRESS !== "undefined") ? TO_ADDRESS : mailData.formGoogleSendEmail;
       
       // send email if to address is set
-      if (sendEmailTo) {
+      if (sendEmailTo && isValidRequest) {
         MailApp.sendEmail({
           to: String(sendEmailTo),
           subject: "Contact form submitted",
@@ -92,7 +106,7 @@ function formatMailBody(obj, order) {
       
       // select the 'responses' sheet by default
       var doc = SpreadsheetApp.getActiveSpreadsheet();
-      var sheetName = e.parameters.formGoogleSheetName || "responses";
+      var sheetName = "Form Responses 1";
       var sheet = doc.getSheetByName(sheetName);
       
       var oldHeader = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];

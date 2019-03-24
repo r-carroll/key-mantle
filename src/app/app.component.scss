@@ -304,4 +304,17 @@
   }
 
   .helv { font-family: Arial, Helvetica, sans-serif }
+
+  .bot-check1 {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .bot-check2 {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    right: -50px;
+    top: 50px;
+  }
   
