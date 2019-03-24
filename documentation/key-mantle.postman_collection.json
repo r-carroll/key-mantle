@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "b517dfce-bc02-4ba4-ae4d-f62829d559e7",
+		"name": "key-mantle",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sheet insert",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Email_Address\": \"test@test.com\"\r\n}"
+				},
+				"url": {
+					"raw": "https://sheets.googleapis.com/v4/spreadsheets/15PamibzLqtvYpusL8v_na1qWCHTP5QVMlNyVPlDVKj0/values/Form%20Responses%201:append?insertDataOption=INSERT_ROWS&key=AIzaSyBz6_NpXCgtSA-OmcBtibV-bPAD7tPOMDs&Accept=application/json&Content-Type=application/json",
+					"protocol": "https",
+					"host": [
+						"sheets",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"v4",
+						"spreadsheets",
+						"15PamibzLqtvYpusL8v_na1qWCHTP5QVMlNyVPlDVKj0",
+						"values",
+						"Form%20Responses%201:append"
+					],
+					"query": [
+						{
+							"key": "insertDataOption",
+							"value": "INSERT_ROWS"
+						},
+						{
+							"key": "key",
+							"value": "AIzaSyBz6_NpXCgtSA-OmcBtibV-bPAD7tPOMDs"
+						},
+						{
+							"key": "Accept",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "read sheet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sheets.googleapis.com/v4/spreadsheets/15PamibzLqtvYpusL8v_na1qWCHTP5QVMlNyVPlDVKj0?key=AIzaSyBz6_NpXCgtSA-OmcBtibV-bPAD7tPOMDs",
+					"protocol": "https",
+					"host": [
+						"sheets",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"v4",
+						"spreadsheets",
+						"15PamibzLqtvYpusL8v_na1qWCHTP5QVMlNyVPlDVKj0"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "AIzaSyBz6_NpXCgtSA-OmcBtibV-bPAD7tPOMDs"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save email to sheet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CM-Token",
+						"value": "cmvalidtoken",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "cmvalidtoken"
+				},
+				"url": {
+					"raw": "https://script.google.com/macros/s/AKfycbzhqnU4SRjU5CEQIX62TTV-nMKPv9eWyNP6dkZFCBbwQkyPxtO_/exec?Email_Address=bad email",
+					"protocol": "https",
+					"host": [
+						"script",
+						"google",
+						"com"
+					],
+					"path": [
+						"macros",
+						"s",
+						"AKfycbzhqnU4SRjU5CEQIX62TTV-nMKPv9eWyNP6dkZFCBbwQkyPxtO_",
+						"exec"
+					],
+					"query": [
+						{
+							"key": "Email_Address",
+							"value": "bad email"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
