@@ -15,6 +15,13 @@ url = 'https://script.google.com/macros/s/AKfycbzhqnU4SRjU5CEQIX62TTV-nMKPv9eWyN
 
     params = params.append('Email_Address', email);
 
-   return this.httpClient.post(this.url, '', {params: params});
+   return this.httpClient.post(this.url, 'cmvalidtoken', {params: params});
+  }
+
+  validateEmail(email): boolean {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      return true;
+    }
+    return false;
   }
 }

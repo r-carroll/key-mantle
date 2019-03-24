@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
   formService;
   email;
   modalRef: BsModalRef;
+  validEmail: boolean = true;
+  bot;
 
 
   ngOnInit() {
@@ -29,14 +31,17 @@ export class AppComponent implements OnInit {
 }
 
   submitEmail(event: Event) {
-
-    // this.toggleModal.nativeElement.click();
-    this.openModal(this.modalTemplate);
-    // this.formService.handleFormSubmit(this.email).subscribe(data => {
-    //   // Success message
-    //   this.email = '';
-    //   this.modalComponent.open(null);
-    // });
+    if (!this.bot) {
+      if(!this.formService.validateEmail(this.email)) {
+        this.validEmail = false;
+      } else {
+        this.validEmail = true;
+        this.formService.handleFormSubmit(this.email).subscribe(data => {
+        this.email = '';
+        this.openModal(this.modalTemplate);
+      });
+      }
+    }
     return;
   }
 }
