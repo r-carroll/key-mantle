@@ -7,11 +7,15 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule, BsModalRef } from 'ngx-bootstrap';
+import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    MaintenanceComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
