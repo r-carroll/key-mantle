@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MailFormService {
-url = 'https://script.google.com/macros/s/AKfycbzhqnU4SRjU5CEQIX62TTV-nMKPv9eWyNP6dkZFCBbwQkyPxtO_/exec';
+url = 'https://script.google.com/macros/s/AKfycbyyLtlgX7mzDTGveY1e9do7__7jLkYQyyy4J83TmTHLlG4gnQU/exec';
 
   constructor(private httpClient: HttpClient) {
   }
   handleFormSubmit(email): Observable<any> {
     let params = new HttpParams();
 
-    params = params.append('Email_Address', email);
+    params = params.append('email', email);
 
    return this.httpClient.post(this.url, 'cmvalidtoken', {params: params});
   }

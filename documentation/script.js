@@ -16,12 +16,15 @@ function formatMailBody(obj, order) {
     }
     
     // loop over all keys in the ordered form data
-    for (var idx in order) {
-      var key = order[idx];
-      result += "<h4 style='text-transform: capitalize; margin-bottom: 0'>" + key + "</h4><div>" + sanitizeInput(obj[key]) + "</div>";
+    //for (var idx in order) {
+     // var key = order[idx];
+     // result += "<h4 style='text-transform: capitalize; margin-bottom: 0'>" + key + "</h4><div>" + sanitizeInput(obj[key]) + "</div>";
       // for every key, concatenate an `<h4 />`/`<div />` pairing of the key name and its value, 
       // and append it to the `result` string created at the start.
-    }
+    // }
+  
+    result = "<h4 style='text-transform: capitalize; margin-bottom: 0'> Email</h4><div>" + sanitizeInput(obj.email) + "</div>";
+    
     return result; // once the looping is done, `result` will be one long string to put in the email body
   }
   
@@ -58,12 +61,6 @@ function formatMailBody(obj, order) {
       }
   
       // names and order of form elements (if set)
-      var orderParameter = e.parameters.formDataNameOrder;
-      var dataOrder;
-      if (orderParameter) {
-        dataOrder = JSON.parse(orderParameter);
-      }
-      
       // determine recepient of the email
       // if you have your email uncommented above, it uses that `TO_ADDRESS`
       // otherwise, it defaults to the email provided by the form's data attribute
@@ -75,7 +72,7 @@ function formatMailBody(obj, order) {
           to: String(sendEmailTo),
           subject: "Contact form submitted",
           // replyTo: String(mailData.email), // This is optional and reliant on your form actually collecting a field named `email`
-          htmlBody: formatMailBody(mailData, dataOrder)
+          htmlBody: formatMailBody(mailData, null)
         });
       }
   
